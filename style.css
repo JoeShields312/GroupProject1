@@ -3,37 +3,19 @@
     background-color:  rgb(190, 21, 21);
     color: white;
     border-radius: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
     font-family: Arial, Helvetica, sans-serif;
-    
-  }
+    }
 
-  #container1 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
+h1 {
+  text-align: center;
+}
 
-  #container2 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
-
-  #container3 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
+.row {
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
 
 body {
     background-image: url("/Images/embossed-diamond.png");

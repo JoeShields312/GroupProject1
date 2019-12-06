@@ -1,0 +1,77 @@
+$(document).ready(function() {
+
+var momentTodayDate = moment().format("YYYY-MM-DD")
+
+var deviceDateTime = new Date().toISOString()
+
+// string interpolation for the device date time 
+// ${deviceDateTime}
+
+var settings = {
+    "crossDomain": true,
+    "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
+    "method": "GET",
+    "headers": {
+      "api-version": "v200",
+      "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
+      "client": "SMIT_0",
+      "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
+      "device-datetime": `${deviceDateTime}`,
+      "territory": "US",
+      "Geolocation": "45;44",
+    }
+  }
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+
+// var APIKey = "&appid=ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U";
+
+// // placeholder cinemaId and filmId for now until reponse show from sequential calls
+
+// var queryMovieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=10" + APIKey;
+
+// "https://api-gate2.movieglu.com/filmsComingSoon/?n=1" -H "api-version: v200" -H "Authorization: Basic A1B2c3D4E5f6H7I8j911M12=" -H "x-api-key: IyrBUDT7CuTTc6LH85mI5aAoG8" -H "device-datetime: " + deviceDateTime -H "territory: [TERRITORY]" -H "client: [USERNAME]"
+
+
+// "https://api-gate2.movieglu.com/filmsNowShowing/?n=1" -H "api-version: v200" -H "Authorization: Basic A1B2c3D4E5f6H7I8j911M12=" -H "x-api-key: IyrBUDT7CuTTc6LH85mI5aAoG8" -H "device-datetime: 2018-09-26T10:45:30.147Z" -H "territory: UK" -H "client: NGIS_UK"
+// function filmsNowShowing() {
+
+// $.ajax({
+//     url: queryMovieURL,
+//     method: "GET"
+//   })
+//     // We store all of the retrieved data inside of an object called "response"
+//     .then(function(response) {
+//     console.log (queryMovieURL);
+//     console.log (response);
+
+//     });
+// };
+// filmsNowShowing();
+
+// var queryShowtimesURL = "https://api-gate2.movieglu.com/filmShowTimes/?film_id=" + filmId + "&date=" + momentTodayDate + APIKey
+
+// $.ajax({
+//     url: queryShowtimesURL,
+//     method: "GET"
+//   })
+//     // We store all of the retrieved data inside of an object called "response"
+//     .then(function(response) {
+
+
+//     });
+
+// var queryCinemaURL = "https://api-gate2.movieglu.com/cinemaDetails/?cinema_id=" + cinemaId + APIKey
+
+// $.ajax({
+//     url: queryCinemaURL,
+//     method: "GET"
+//   })
+//     // We store all of the retrieved data inside of an object called "response"
+//     .then(function(response) {
+
+
+//     });
+
+});

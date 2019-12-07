@@ -59,21 +59,21 @@ $(document).ready(function() {
   
   
   // Cinema Show Times API Settings
-  // var filmShowTimesSetting = {
-  //     "crossDomain": true,
-  //     "url": "https://api-gate2.movieglu.com/filmShowTimes/?film_id=240948&date=2019-12-07",
-  //     "method": "GET",
-  //     "headers": {
-  //       "api-version": "v200",
-  //       "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
-  //       "client": "SMIT_0",
-  //       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
-  //       "device-datetime": `${deviceDateTime}`,
-  //       "territory": "US",
-  //       "Geolocation": "42.0446208;-87.6675072",
+  var filmShowTimesSetting = {
+      "crossDomain": true,
+      "url": "https://api-gate2.movieglu.com/filmShowTimes/?film_id=240948&date=" + momentTodayDate,
+      "method": "GET",
+      "headers": {
+        "api-version": "v200",
+        "Authorization": "Basic Qk9PVF8yOmdBSkVFWFhuTFlHVw===",
+        "client": "BOOT_2",
+        "x-api-key": "	ZgTYUEfaLc3nwZHwGLzaD5kwBH0fGAgZ7eHIL724",
+        "device-datetime": `${deviceDateTime}`,
+        "territory": "US",
+        "Geolocation": "42.0446208;-87.6675072",
   
-  //     }
-  //   }
+      }
+    }
   
   // var cinemaDetailsSetting;
   // Cinema Details API Settings
@@ -100,13 +100,13 @@ $(document).ready(function() {
     filmsNowShowing(response);
   });
   
-  // $.ajax(filmShowTimesSetting).done(function (response) {
-  //   // filmShowTimes(response);
+  $.ajax(filmShowTimesSetting).done(function (response) {
+    // filmShowTimes(response);
 
-  //   console.log("filmShowTimes");
-  //   console.log(response);
+    console.log("filmShowTimes");
+    console.log(response);
 
-  // });
+  });
 
   $.ajax(cinemaDetailsSetting).done(function (response) {
     // cinemaDetails(response);

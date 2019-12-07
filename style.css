@@ -8,15 +8,13 @@
   color:#b71c1c red darken-4;
 }
 
-
 nav {
   background: none;
   border: none;
 }
 h1 {
-  
-  color: white;
-  
+  bottom: 100px;
+  color: whitesmoke;
 }
 
 body {

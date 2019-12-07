@@ -19,7 +19,7 @@ h1 {
 }
 
 body {
-    background-image: url("/Images/chicago-theatre.jpg");
+    background-image: url("./images/chicago-theatre.jpg");
     background: contain;
 }
 

@@ -106,11 +106,11 @@ $(document).ready(function() {
 
     let cardEl = $("<div>").attr("class", "card");
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
-    let cardImage = $("<img>").attr("src", `${filmImage}`);
-    let cardName = $("<h6>").attr("class", "card-title").text(filmName);
+    let cardImageEl = $("<img>").attr("src", `${filmImage}`);
+    let cardNameEl = $("<h6>").attr("class", "card-title").text(filmName);
 
     cardEl.append(cardBodyEl);
-    cardBodyEl.append(cardTitleEl).append(cardImage).append(cardName);
+    cardBodyEl.append(cardImageEl).append(cardNameEl);
     $("#ten-card-deck").append(cardEl);
   }
 

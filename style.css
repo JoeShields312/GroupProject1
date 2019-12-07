@@ -8,6 +8,7 @@
   color:#b71c1c red darken-4;
 }
 
+
 nav {
   background: none;
   border: none;
@@ -21,3 +22,4 @@ body {
     background-image: url("/Images/chicago-theatre.jpg");
     background: contain;
 }
+

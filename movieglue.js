@@ -1,3 +1,30 @@
+$("#startBtn").on("click", function() {
+
+
+  getLocation()
+  // Check if browser allows geolocation
+function getLocation() {
+  if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  else {
+      alert("Use a different browser")
+  }
+}
+
+// Get coords from geolocation
+function showPosition(position) {
+
+  // User Location
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  
+  // Check console
+  console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
+  console.log(`Devicer location latitude: ${lat} Longitude: ${lon}`);
+}
+
+
 $(document).ready(function() {
 
 
@@ -6,7 +33,7 @@ $(document).ready(function() {
   var deviceDateTime = new Date().toISOString()
   
   
-  
+
   
   // string interpolation for the device date time 
   // ${deviceDateTime}
@@ -32,23 +59,23 @@ $(document).ready(function() {
   
   
   // Cinema Show Times API Settings
-  var filmShowTimesSetting = {
-      "crossDomain": true,
-      "url": "https://api-gate2.movieglu.com/filmShowTimes/?film_id=240948&date=2019-12-07",
-      "method": "GET",
-      "headers": {
-        "api-version": "v200",
-        "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
-        "client": "SMIT_0",
-        "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
-        "device-datetime": `${deviceDateTime}`,
-        "territory": "US",
-        "Geolocation": "42.0446208;-87.6675072",
+  // var filmShowTimesSetting = {
+  //     "crossDomain": true,
+  //     "url": "https://api-gate2.movieglu.com/filmShowTimes/?film_id=240948&date=2019-12-07",
+  //     "method": "GET",
+  //     "headers": {
+  //       "api-version": "v200",
+  //       "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
+  //       "client": "SMIT_0",
+  //       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
+  //       "device-datetime": `${deviceDateTime}`,
+  //       "territory": "US",
+  //       "Geolocation": "42.0446208;-87.6675072",
   
-      }
-    }
+  //     }
+  //   }
   
-  var cinemaDetailsSetting;
+  // var cinemaDetailsSetting;
   // Cinema Details API Settings
   var cinemaDetailsSetting = {
     "crossDomain": true,
@@ -68,29 +95,31 @@ $(document).ready(function() {
   
     // Call filmsNowShowing Ajax
   $.ajax(filmsNowShowingSetting).done(function (response) {
-    // movieGlu Initiate
-    movieGlu(response);
-  });
-  
-  
-  function movieGlu (response) {
-  
-    // Initiate filmsNowShowing
-    filmsNowShowing(response);
-  
-    // Cinema Show Times
-    $.ajax(filmShowTimesSetting).done(function (response) {
-      filmShowTimes(response);
-      // Cinema Details
-      $.ajax(cinemaDetailsSetting).done(function (response) {
-        cinemaDetails(response);
-  
-      });  
-    });
-  
-  function filmsNowShowing(response) {
     console.log("filmsNowShowing");
     console.log(response);
+    filmsNowShowing(response);
+  });
+  
+  // $.ajax(filmShowTimesSetting).done(function (response) {
+  //   // filmShowTimes(response);
+
+  //   console.log("filmShowTimes");
+  //   console.log(response);
+
+  // });
+
+  $.ajax(cinemaDetailsSetting).done(function (response) {
+    // cinemaDetails(response);
+    console.log("cinemaDetails");
+    console.log(response);
+
+  });
+
+
+
+
+  function filmsNowShowing(response) {
+
 
     for (let i = 0; i < 10; i ++) {
 
@@ -108,6 +137,7 @@ $(document).ready(function() {
     let cardEl = $("<div>").attr("class", "card");
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
     let cardImageEl = $("<img>").attr("src", `${filmImage}`);
+    cardImageEl.attr("data-film", filmId);
     let cardNameEl = $("<h6>").attr("class", "card-title").text(filmName);
 
     cardEl.append(cardBodyEl);
@@ -127,15 +157,13 @@ $(document).ready(function() {
 
   }
   
-  function filmShowTimes(response) {
-    console.log("filmShowTimes");
-    console.log(response);
-  }
+  // function filmShowTimes(response) {
+
+  // }
   
-  function cinemaDetails(response) {
-    console.log("conemaDetails");
-    console.log(response);
-  }
+  // function cinemaDetails(response) {
+
+  // }
   
       // let cardEl = $("<button>").attr("class", "card");
       // let cardBodyEl = $("<div>").attr("class", "card-body five-card");
@@ -152,57 +180,8 @@ $(document).ready(function() {
   
     }
   
-  // Cinema Show Times API
+
   
-  // var APIKey = "&appid=ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U";
+  );
   
-  // // placeholder cinemaId and filmId for now until reponse show from sequential calls
-  
-  // var queryMovieURL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=10" + APIKey;
-  
-  // "https://api-gate2.movieglu.com/filmsComingSoon/?n=1" -H "api-version: v200" -H "Authorization: Basic A1B2c3D4E5f6H7I8j911M12=" -H "x-api-key: IyrBUDT7CuTTc6LH85mI5aAoG8" -H "device-datetime: " + deviceDateTime -H "territory: [TERRITORY]" -H "client: [USERNAME]"
-  
-  
-  // "https://api-gate2.movieglu.com/filmsNowShowing/?n=1" -H "api-version: v200" -H "Authorization: Basic A1B2c3D4E5f6H7I8j911M12=" -H "x-api-key: IyrBUDT7CuTTc6LH85mI5aAoG8" -H "device-datetime: 2018-09-26T10:45:30.147Z" -H "territory: UK" -H "client: NGIS_UK"
-  // function filmsNowShowing() {
-  
-  // $.ajax({
-  //     url: queryMovieURL,
-  //     method: "GET"
-  //   })
-  //     // We store all of the retrieved data inside of an object called "response"
-  //     .then(function(response) {
-  //     console.log (queryMovieURL);
-  //     console.log (response);
-  
-  //     });
-  // };
-  // filmsNowShowing();
-  
-  // var queryShowtimesURL = "https://api-gate2.movieglu.com/filmShowTimes/?film_id=" + filmId + "&date=" + momentTodayDate + APIKey
-  
-  // $.ajax({
-  //     url: queryShowtimesURL,
-  //     method: "GET"
-  //   })
-  //     // We store all of the retrieved data inside of an object called "response"
-  //     .then(function(response) {
-  
-  
-  //     });
-  
-  // var queryCinemaURL = "https://api-gate2.movieglu.com/cinemaDetails/?cinema_id=" + cinemaId + APIKey
-  
-  // $.ajax({
-  //     url: queryCinemaURL,
-  //     method: "GET"
-  //   })
-  //     // We store all of the retrieved data inside of an object called "response"
-  //     .then(function(response) {
-  
-  
-  //     });
-  
-  
-  });
-  
+});

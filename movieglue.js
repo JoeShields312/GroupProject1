@@ -90,6 +90,42 @@ $(document).ready(function() {
   function filmsNowShowing(response) {
     console.log("filmsNowShowing");
     console.log(response);
+
+    for (let i = 0; i < 10; i ++) {
+
+    let filmId = response.films[i].film_id;
+    let filmName = response.films[i].film_name;
+    let filmImage = response.films[i].images.poster["1"].medium.film_image;
+
+    // let cityDate = moment().format('l');
+    // let cityIcon = response.weather[0].icon;
+    // let cityTemp = Math.round(response.main.temp);
+    // let cityHumid = response.main.humidity;
+    // let cityWind = Math.round(response.wind.speed);
+    // let cityIconEl = $("<img>").attr("src", `https://openweathermap.org/img/w/${cityIcon}.png`)
+
+    let cardEl = $("<div>").attr("class", "card");
+    let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
+    let cardImage = $("<img>").attr("src", `${filmImage}`);
+    let cardName = $("<h6>").attr("class", "card-title").text(filmName);
+
+    cardEl.append(cardBodyEl);
+    cardBodyEl.append(cardTitleEl).append(cardImage).append(cardName);
+    $("#ten-card-deck").append(cardEl);
+  }
+
+
+
+
+    // let cardTitleEl = $("<h6>").attr("class", "card-title").text(date);
+    
+    // let cardTempEl = $("<p>").attr("class", "card-text").text(`Temp: ${cardTemp} °F`);
+    // let cardHumidEl = $("<p>").attr("class", "card-text").text(`Humidity: ${cardHumid}%`);
+
+
+
+
+
   }
   
   function filmShowTimes(response) {

@@ -1,13 +1,25 @@
 .jumbotron {
     text-align: center;
-    background-color:  rgb(190, 21, 21);
     color: white;
     border-radius: 0;
-    border-bottom: 2px solid black;
     font-family: Arial, Helvetica, sans-serif;
-    
   }
+.startBtn {
+  color:#b71c1c red darken-4;
+}
+
+
+nav {
+  background: none;
+  border: none;
+}
+h1 {
+  bottom: 100px;
+  color: whitesmoke;
+}
 
 body {
-    background-image: url("Images/embossed-diamond.png");
+    background-image: url("/Images/chicago-theatre.jpg");
+    background: contain;
 }
+

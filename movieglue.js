@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   var momentTodayDate = moment().format("YYYY-MM-DD")
   
   var deviceDateTime = new Date().toISOString()
@@ -121,8 +122,6 @@ $(document).ready(function() {
     
     // let cardTempEl = $("<p>").attr("class", "card-text").text(`Temp: ${cardTemp} °F`);
     // let cardHumidEl = $("<p>").attr("class", "card-text").text(`Humidity: ${cardHumid}%`);
-
-
 
 
 

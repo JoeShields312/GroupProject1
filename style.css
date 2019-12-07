@@ -8,33 +8,6 @@
     
   }
 
-  #container1 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
-
-  #container2 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
-
-  #container3 {
-    border: solid black 1px;
-    margin: 2rem;
-    padding: 2rem;
-    display: inline-block,;
-    contain: content;
-    text-align: center;
-  }
-
 body {
-    background-image: url("/Images/embossed-diamond.png");
+    background-image: url("Images/embossed-diamond.png");
 }

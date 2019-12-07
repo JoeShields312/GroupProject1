@@ -1,6 +1,11 @@
 // Get User device location on click of startBtn
 $("#startBtn").on("click", function(start) {
+
+    // Get Device Location
     getLocation()
+
+    //Display Movie Images
+    filmsNowShowing()
 })
 
 // Check if browser allows geolocation
@@ -15,8 +20,12 @@ function getLocation() {
 
 // Get coords from geolocation
 function showPosition(position) {
+
+    // User Location
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
+    
+    // Check console
     console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
 }
 

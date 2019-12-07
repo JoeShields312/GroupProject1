@@ -13,7 +13,7 @@ $.ajax({
 }).then(function(omdbResponse) {
     console.log("OMDB RESPONSE: " + omdbResponse);
 
-    omdbRatings();
+    omdbRatings(omdbResponse);
 });
 
 // Get ratings from omdb
@@ -33,5 +33,5 @@ function omdbRatings() {
     $("#Imd-rating").text('Source: ' + omdbImbSource + ' Score: ' + omdbImdScore + '/10');
     $("#Rotten-rating").text('Source: ' + omdbRottenSource + ' Score: ' + omdbRottenScore + '%');
     $("#Meta-rating").text('Source: ' + omdbMetaSource + ' Score: ' + omdbMetaScore + '/100');
-
+    
 }

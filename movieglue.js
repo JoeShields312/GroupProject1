@@ -4,12 +4,16 @@ var momentTodayDate = moment().format("YYYY-MM-DD")
 
 var deviceDateTime = new Date().toISOString()
 
+
+
+
 // string interpolation for the device date time 
 // ${deviceDateTime}
 
 
+
 // Films Now Showing API Settings
-var filmsNowShowing = {
+var filmsNowShowingSetting = {
     "crossDomain": true,
     "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
     "method": "GET",
@@ -24,10 +28,11 @@ var filmsNowShowing = {
     }
   }
 
+
 // Cinema Show Times API Settings
-var cinemaShowTimes = {
+var filmShowTimesSetting = {
     "crossDomain": true,
-    "url": "https://api-gate2.movieglu.com/cinemaDetails/?cinema_id=12345",
+    "url": "https://api-gate2.movieglu.com/filmShowTimes/?film_id=240948&date=2019-12-07",
     "method": "GET",
     "headers": {
       "api-version": "v200",
@@ -36,12 +41,14 @@ var cinemaShowTimes = {
       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
       "device-datetime": `${deviceDateTime}`,
       "territory": "US",
+      "Geolocation": "45;44",
 
     }
   }
 
+
 // Cinema Details API Settings
-var cinemaDetails = {
+var cinemaDetailsSetting = {
   "crossDomain": true,
   "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
   "method": "GET",
@@ -58,36 +65,40 @@ var cinemaDetails = {
 
 
   // Call filmsNowShowing Ajax
-$.ajax(filmsNowShowing).done(function (response) {
+$.ajax(filmsNowShowingSetting).done(function (response) {
   // movieGlu Initiate
   movieGlu(response);
 });
 
+
 function movieGlu (response) {
-  // Variables
+
   // Initiate filmsNowShowing
   filmsNowShowing(response);
 
   // Cinema Show Times
-  $.ajax(cinemaShowTimes).done(function (response) {
-    cinemaShowTimes();
+  $.ajax(filmShowTimesSetting).done(function (response) {
+    filmShowTimes(response);
     // Cinema Details
-    $.ajax(cinemaDetails).done(function (response) {
-      cinemaDetails();
+    $.ajax(cinemaDetailsSetting).done(function (response) {
+      cinemaDetails(response);
 
     });  
   });
 
 function filmsNowShowing(response) {
-
+  console.log("filmsNowShowing");
+  console.log(response);
 }
 
-function cinemaShowTimes(response) {
-
+function filmShowTimes(response) {
+  console.log("filmShowTimes");
+  console.log(response);
 }
 
 function cinemaDetails(response) {
-
+  console.log("conemaDetails");
+  console.log(response);
 }
 
     // let cardEl = $("<button>").attr("class", "card");
@@ -155,5 +166,6 @@ function cinemaDetails(response) {
 
 
 //     });
+
 
 });

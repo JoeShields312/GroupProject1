@@ -22,7 +22,8 @@ var filmsNowShowingSetting = {
       "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
       "client": "SMIT_0",
       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
-      "device-datetime": `${deviceDateTime}`,
+      // "device-datetime": `${deviceDateTime}`,
+      "device-datetime": deviceDateTime,
       "territory": "US",
 
     }
@@ -41,7 +42,7 @@ var filmShowTimesSetting = {
       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
       "device-datetime": `${deviceDateTime}`,
       "territory": "US",
-      "Geolocation": "45;44",
+      "Geolocation": "42.0446208;-87.6675072",
 
     }
   }

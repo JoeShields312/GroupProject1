@@ -27,6 +27,7 @@ function showPosition(position) {
     
     // Check console
     console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
+    console.log(`Devicer location latitude: ${lat} Longitude: ${lon}`);
 }
 
 

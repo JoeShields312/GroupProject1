@@ -134,6 +134,7 @@ $("img").on("click", function() {
     let cinemaCity = response.cinemas[i].city;
     let cinemaPostcode = response.cinemas[i].postcode;
     let cinemaDistance = response.cinemas[i].distance;
+    let cinemaNextShow = response.cinemas[i].time;
     let cinemaLat = response.cinemas[i].lat;
     let cinemaLng = response.cinemas[i].lng;
 
@@ -146,11 +147,12 @@ $("img").on("click", function() {
     let cinemaCityEl = $("<p>").attr("class", "city").text(cinemaCity);
     let cinemaPostcodeEl = $("<p>").attr("class", "postcode").text(cinemaPostcode);
     let cinemaDistanceEl = $("<p>").attr("class", "distance").text(cinemaDistance);
+    let cinemaNextShowEl = $("<p>").attr("class", "nextShow").text(cinemaNextShow);
 
 
 
     cinemaCardEl.append(cinemaCardBodyEl);
-    cinemaCardBodyEl.append(cinemaNameEl, cinemaAddressEl, cinemaCityEl, cinemaPostcodeEl, cinemaDistanceEl)
+    cinemaCardBodyEl.append(cinemaNameEl, cinemaAddressEl, cinemaCityEl, cinemaPostcodeEl, cinemaDistanceEl, cinemaNextShowEl)
     $("#cinemaOutput").append(cinemaCardEl);
   };
   };

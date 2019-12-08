@@ -1,22 +1,31 @@
-// Get User device location on click of startBtn
-$("#startBtn").on("click", function(start) {
-    getLocation()
-})
+// // Get User device location on click of startBtn
+// $("#startBtn").on("click", function(start) {
 
-// Check if browser allows geolocation
-function getLocation() {
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    else {
-        alert("Use a different browser")
-    }
-}
+//     // Get Device Location
+//     getLocation()
 
-// Get coords from geolocation
-function showPosition(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
-    redirect(lat, lon);
-}
+// })
+
+// // Check if browser allows geolocation
+// function getLocation() {
+//     if(navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition);
+//     }
+//     else {
+//         alert("Use a different browser")
+//     }
+// }
+
+// // Get coords from geolocation
+// function showPosition(position) {
+
+//     // User Location
+//     let lat = position.coords.latitude;
+//     let lon = position.coords.longitude;
+    
+//     // Check console
+//     console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
+//     console.log(`Devicer location latitude: ${lat} Longitude: ${lon}`);
+// }
+
+

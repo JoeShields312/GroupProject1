@@ -1,8 +1,13 @@
 .jumbotron {
     text-align: center;
-    color: crimson;
+    color: white;
+    background-image: url("./images/movie-night-inside-header.jpg");
     border-radius: 0;
     font-family: Arial, Helvetica, sans-serif;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
   }
 
 .startBtn {
@@ -16,7 +21,7 @@ nav {
 }
 h1 {
   bottom: 100px;
-  color: whitesmoke;
+  color: white;
 }
 
 body {
@@ -36,7 +41,7 @@ margin: auto 0;
 }
 
 .cinemaCard {
-  background-color: blue;
+  background-color: crimson;
 }
 
 .movieCard {
@@ -46,3 +51,15 @@ margin: auto 0;
 #ten-card-deck {
 width: 230px;
 }
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #546e7a;
+  color: white;
+  text-align: center;
+  text-shadow: ivory;
+  text-size-adjust: 15px;
+}
+

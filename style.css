@@ -1,9 +1,10 @@
 .jumbotron {
     text-align: center;
-    color: white;
+    color: crimson;
     border-radius: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
+
 .startBtn {
   color:#b71c1c red darken-4;
 }
@@ -23,10 +24,23 @@ body {
     background: contain;
 }
 
+#cinemaOutput {
+align-items: center;
+
+}
+
 .card {
 border: solid 5px black;
 padding: 10px;
 margin: auto 0;
+}
+
+.cinemaCard {
+  background-color: blue;
+}
+
+.movieCard {
+  background-color: blue;
 }
 
 #ten-card-deck {

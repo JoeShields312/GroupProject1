@@ -77,7 +77,7 @@ $(document).ready(function() {
     // let cityWind = Math.round(response.wind.speed);
     // let cityIconEl = $("<img>").attr("src", `https://openweathermap.org/img/w/${cityIcon}.png`)
 
-    let cardEl = $("<div>").attr("class", "card");
+    let cardEl = $("<div>").attr("class", "card movieCard");
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
     let cardImageEl = $("<img>").attr("src", `${filmImage}`);
     cardImageEl.attr("data-film", filmId);

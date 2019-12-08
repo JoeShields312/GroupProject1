@@ -81,6 +81,7 @@ $(document).ready(function() {
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
     let cardImageEl = $("<img>").attr("src", `${filmImage}`);
     cardImageEl.attr("data-film", filmId);
+    cardImageEl.attr("data-name", filmName);
     let cardNameEl = $("<h6>").attr("class", "card-title").text(filmName);
 
     cardEl.append(cardBodyEl);
@@ -93,6 +94,7 @@ $("img").on("click", function() {
   
   // film Id info is pulled from the data attribute set above on cardImageEl
   var filmIdData = $(this).data("film");
+  var filmNameData = $(this).data("name");
   var cinemaBody = $("#cinemaOutput");
 
   console.log(filmIdData);

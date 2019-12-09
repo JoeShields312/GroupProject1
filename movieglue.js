@@ -42,9 +42,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
-        "client": "SMIT_0",
-        "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
+        "Authorization": "Basic Qk9PVF8yOmdBSkVFWFhuTFlHVw===",
+        "client": "BOOT_2",
+        "x-api-key": "ZgTYUEfaLc3nwZHwGLzaD5kwBH0fGAgZ7eHIL724",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": deviceDateTime,
         "territory": "US",
@@ -98,6 +98,9 @@ $("img").on("click", function() {
   var cinemaBody = $("#cinemaOutput");
 
   console.log(filmIdData);
+  console.log(filmNameData);
+
+
 
  // Cinema Show Times API Settings 
   var closestShowingSetting = {
@@ -164,29 +167,30 @@ $("img").on("click", function() {
 
 };
 
-  // var cinemaDetailsSetting;
-  // Cinema Details API Settings
-  var cinemaDetailsSetting = {
-    "crossDomain": true,
-    "url": "https://api-gate2.movieglu.com/cinemaDetails/?cinema_id=7607",
-    "method": "GET",
-    "headers": {
-      "api-version": "v200",
-      "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
-      "client": "SMIT_0",
-      "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
-      "device-datetime": `${deviceDateTime}`,
-      "territory": "US",
+// no longer using cinemaDetails API, commenting out
+//   // var cinemaDetailsSetting;
+//   // Cinema Details API Settings
+//   var cinemaDetailsSetting = {
+//     "crossDomain": true,
+//     "url": "https://api-gate2.movieglu.com/cinemaDetails/?cinema_id=7607",
+//     "method": "GET",
+//     "headers": {
+//       "api-version": "v200",
+//       "Authorization": "Basic U01JVF8wOkF4emkwWEppMDFlcg==",
+//       "client": "SMIT_0",
+//       "x-api-key": "ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U",
+//       "device-datetime": `${deviceDateTime}`,
+//       "territory": "US",
   
-    }
-  }
+//     }
+//   }
 
-$.ajax(cinemaDetailsSetting).done(function (response) {
-  // cinemaDetails(response);
-  console.log("cinemaDetails");
-  console.log(response);
+// $.ajax(cinemaDetailsSetting).done(function (response) {
+//   // cinemaDetails(response);
+//   console.log("cinemaDetails");
+//   console.log(response);
 
-  });
+//   });
   
 
 

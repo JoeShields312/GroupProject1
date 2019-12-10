@@ -48,9 +48,18 @@ body {
 	background-color: blue;
 }
 
+.detailsCard {
+  background-color: green;
+}
+
 #ten-card-deck {
 	width: 230px;
 	display: flex;
+}
+
+#map {
+  height:400px;
+  width:100%;
 }
 
 footer {

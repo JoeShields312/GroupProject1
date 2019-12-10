@@ -1,46 +1,37 @@
-const APIKey = "AIzaSyAgbqBDkDy9k9S7IOG-sCvw21-NXUiTok0";
-let userLocation = "";
-let userLon = "60093";
-let userLat = "60025";
 
 
-    // URL to google maps directions api
-    var queryURL = "maps.googleapis.com/maps/api/geocode/json?" +
-        "address=" + userLocation + "&key=" + APIKey;
+function initMap() {
+  var directionsService = new google.maps.DirectionsService;
+  var directionsRenderer = new google.maps.DirectionsRenderer;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: {lat:42.0446208,lng:-87.7658112}
+  });
+  directionsRenderer.setMap(map);
 
-    // Here we run our AJAX call to the google maps direction API
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      // We store all of the retrieved data inside of an object called "googleMaps"
-      .then(function(googleMaps) {
+  // var getCoords = function() {
+  //   displayRoute(directionsService, directionsRenderer);
+  // };
+  displayRoute(directionsService, directionsRenderer);
+  // document.getElementById('deviceLocation').addEventListener('change', getCoords);
+  // document.getElementById('cinemaLocation').addEventListener('change', getCoords);
+}
 
-        // Log the queryURL
-        console.log(queryURL);
-
-        // Log the resulting object
-        console.log(googleMaps);
-
-
-        // Transfer content to HTML
-
-        // $(".city").html("<h1>" + googleMaps.name + " Weather Details</h1>");
-        // $(".wind").text("Wind Speed: " + googleMaps.wind.speed);
-        // $(".humidity").text("Humidity: " + googleMaps.main.humidity);
-        // $(".temp").text("Temperature (F) " + googleMaps.main.temp);
-
-
-        // // Converts the temp to Kelvin with the below formula
-
-        // var tempF = (googleMaps.main.temp - 273.15) * 1.80 + 32;
-        // $(".tempF").text("Temperature (Kelvin) " + tempF);
-
-
-        // // Log the data in the console as well
-
-        // console.log("Wind Speed: " + googleMaps.wind.speed);
-        // console.log("Humidity: " + googleMaps.main.humidity);
-        // console.log("Temperature (F): " + googleMaps.main.temp);
-
-      });
+function displayRoute(directionsService, directionsRenderer) {
+  directionsService.route({
+    // origin: document.getElementById('deviceLocation').value,
+    // destination: document.getElementById('cinemaLocation').value,
+    origin:{lat:42.0446208,lng:-87.7658112},
+    destination:{lat:42.1257216,lng:-87.7658112},
+    // origin:chicago,
+    // destination:boston,
+    travelMode: 'DRIVING'
+  },function(response, status) {
+    if (status === 'OK') {
+      directionsRenderer.setDirections(response);
+    } else {
+      console.log('directionsRenderer request failed: ' + status);
+    }
+  }
+  );
+}

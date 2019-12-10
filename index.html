@@ -14,52 +14,53 @@
 		<title>Movie & Groovies</title>
 	</head>
 	<body>
-		<header class="jumbotron">
-			<nav>
-				<h1><i class="fas fa-film fa-lg"></i>  Movies & Groovies</h1>
-			</nav>
-		</header>
-		<body>
-      <br>
-       <!-- Container with top ten films shown in theatre -->
-			<div class="col s12 m12" id="movies">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Films Now Showing (Top 10)</span>
-						<div id="ten-card-deck">
-							<p><button  id="startBtn" class="btn waves-effect waves-light" type="submit" name="action">Click to display <i class="fa fa-ticket-alt"></i></button>
-							</p>
+		<div>
+			<div class="row">
+				<div class="col s12">
+					<nav>
+						<div class="nav-wrapper">
+							<a href="#" class="brand-logo center"><i class="fas fa-film fa-lg"></i> Movies & Groovies</a>
 						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row"></div>
+			<div class="col s6 center-align" id="movies">
+				<div>
+					<!-- button click shows top ten films shown in theatre -->
+					<div id="ten-card-deck">
+						<p><button id="startBtn" class="btn waves-effect waves-light" type="submit" name="action">Click to display top 10 films in theatre <i class="fa fa-ticket-alt"></i></button></p>
 					</div>
 				</div>
 			</div>
-			</div>
-      <br>
-      <!-- Container with 5 closest cinemas -->
-			<div class="col s12 m12">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Closest Cinemas</span>
-						<div id="cinemaOutput" class="center-align">
+			</div>			
+		</div>
+		<!-- row with 5 closest cinemas -->
+		<div class="row">
+		<div class="col s12">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">Closest Cinemas</span>
+					<div id="cinemaOutput" class="center-align">
 						<!-- nearby cinemas (that have showtimes but will not output show times..) dynamically generated with javascript  -->
+					</div>
+				</div>
+				</div>
+			</div>
+		<!-- Container with Google map, displays directions from current location -->
+		<div class="col s6">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">Google Maps</span>
+						<div id="map">
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			</div>
-      <br>
-      <!-- Container with Google map, displays directions from current location -->
-			<div class="col s12 m12">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Google Maps</span>
-					</div>
-				</div>
-			</div>
-      <br>
       <!-- Container with movie reviews for film clicked -->
-			<div class="col s12 m12">
+			<div class="col s6">
 				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
 						<span class="card-title">OMDB</span>
@@ -70,6 +71,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 			<footer>
 				<div><i class="fas fa-smile-beam"></i></div>
 			</footer>
@@ -79,6 +81,7 @@
 			<script src="omdb.js"></script>
 			<script src="init.js"></script>
 			<script src="movieglue.js"></script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgbqBDkDy9k9S7IOG-sCvw21-NXUiTok0&callback=initMap"></script>
 	</body>
 </html>
 

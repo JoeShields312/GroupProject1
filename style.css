@@ -23,8 +23,12 @@ body {
 }
 
 #cinemaOutput {
-	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
+}
+
+#cinemaOutput>* {
+    flex: 1 1 80px;
 }
 
 .card-body img {
@@ -41,6 +45,7 @@ body {
 	font-size: 14px;
 	height: 30px;
 	line-height: 1;
+	min-height: 3rem;
 }
 
 .card {
@@ -66,12 +71,13 @@ body {
     display: flex;
 	flex-wrap: wrap;
 }
-.card-title {
- min-height: 3rem;
-}
 
 #ten-card-deck>* {
     flex: 1 1 80px;
+}
+
+.card-title {
+text-align: center;
 }
 
 .card-body img {

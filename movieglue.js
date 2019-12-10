@@ -25,23 +25,22 @@ function showPosition(position) {
   console.log(`Device location latitude: ${lat} Longitude: ${lon}`);
 }
 
+// How to bring in user coords to API calls?
 // currentLat = lat.toNum();
 // currentLon = lon.toNum();
 
 
 $(document).ready(function() {
 
-  // may not need this current date var anymore, since we changed the API calls we're using
-  var momentTodayDate = moment().format("YYYY-MM-DD")
-
-  // still need to convert this ISO date to local deviceDateTime
-  var deviceDateTime = new Date().toISOString()
+  var deviceDateTime = new Date().toLocaleString();
+  var convertedDeviceDateTime = moment(deviceDateTime).format("YYYY-MM-DD HH:mm:ss");
+  console.log(deviceDateTime);
+  console.log(convertedDeviceDateTime);
   
   // string interpolation for the device date time 
   // ${deviceDateTime}
   
-  
-  // Films Now Showing API Settings
+  // filmsNowShowing API Settings
   var filmsNowShowingSetting = {
       "crossDomain": true,
       "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
@@ -52,7 +51,7 @@ $(document).ready(function() {
         "client": "NZDZ",
         "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
         // "device-datetime": `${deviceDateTime}`,
-        "device-datetime": deviceDateTime,
+        "device-datetime": `${convertedDeviceDateTime}`,
         "territory": "US",
   
       }
@@ -72,11 +71,13 @@ $(document).ready(function() {
   function filmsNowShowing(response) {
 
     for (let i = 0; i < 10; i++) {
-
+    
+    // defining the object data for display and use in next API calls
     let filmId = response.films[i].film_id;
     let filmName = response.films[i].film_name;
     let filmImage = response.films[i].images.poster["1"].medium.film_image;
-
+    
+    // create divs, header, and p tags for each object data
     let cardEl = $("<div>").attr("class", "card movieCard");
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
     let cardImageEl = $("<img>").attr("src", `${filmImage}`);
@@ -84,6 +85,7 @@ $(document).ready(function() {
     cardImageEl.attr("data-name", filmName);
     let cardNameEl = $("<h6>").attr("class", "card-title").text(filmName);
 
+    // appended all the elements created
     cardEl.append(cardBodyEl);
     cardBodyEl.append(cardImageEl).append(cardNameEl);
     $("#ten-card-deck").append(cardEl);
@@ -111,6 +113,7 @@ $("img").on("click", function() {
 
     console.log ("movieDetails");
     console.log (response);
+    // Empty container before populating new movie details when clicking a different film image
     omdbBody.empty();
     movieDetails(response);
   });
@@ -118,7 +121,6 @@ $("img").on("click", function() {
   function movieDetails(response) {
 
     // defining the object data for title, release date, rated, runtime, genre, cast, Director, Synopsis, ratings
-
     let title = response.Title;
     // format is 22 Nov 2019 (should convert to November 22, 2019)
     let released = moment(response.Released, "DD MMM YYYY").format("MMMM DD, YYYY");
@@ -131,7 +133,7 @@ $("img").on("click", function() {
     let imdb = response.imdbRating;
     let metascore = response.Metascore;
 
-    // Create divs, header, and p tags for each object data
+    // create divs, header, and p tags for each object data
     let detailsCardEl = $("<div>").attr("class", "card detailsCard");
     let detailsCardBodyEl = $("<div>").attr("class", "card-body");
     let titleEl = $("<h6>").attr("class", "card-title").text(title);
@@ -161,7 +163,7 @@ $("img").on("click", function() {
     "Authorization": "Basic TlpEWjpxbXV5SWFST0RTbVk=",
     "client": "NZDZ",
     "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
-    "device-datetime": `${deviceDateTime}`,
+    "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
     // We still need to replace this geolocation with a var from geolocation function at the top (Yong?)
     "Geolocation": "42.0446208;-87.6675072",
@@ -173,6 +175,7 @@ $("img").on("click", function() {
 
     console.log("closestShowing");
     console.log(response);
+    // Empty container before populating new cinema details when clicking a different film image
     cinemaBody.empty();
     // runs the for loop function immediately below (which will output nearest 5 cinema details)
     closestShowing(response);
@@ -218,16 +221,17 @@ $("img").on("click", function() {
     $("#cinemaOutput").append(cinemaCardEl);
   };
 
- // Yong, here's where I believe you would put the .cinemaCard onclick event function like I have above for the img tag function. Define the data attributes you'll be using/pulling from the data attributes you created above for cinemaLat and cinemaLng, like below
-
+ //Put the Google Maps API function within function "closestShowing" and onclick event. This way it only runs after clicking specific cinema card body, grabbing that cinemaLat/cinemaLng data attribute as part of the call.
   $(".cinemaCard").on("click", function() {
     var cinemaLatData = $(this).data("lat");
     var cinemaLngData = $(this).data("lng");
     var mapBody = $("#map");
     
+    // Empty container before populating new map on click of a different cinema
     mapBody.empty();
     initMap();
 
+  // runs function and calls to render the map and route
   function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsRenderer = new google.maps.DirectionsRenderer;

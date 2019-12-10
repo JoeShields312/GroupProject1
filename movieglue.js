@@ -203,13 +203,13 @@ $("img").on("click", function() {
     // Yong, you would need to create data attributes for your cinemaLat and cinemaLng lets like the lines immediately above, in order to pull that data with an onclick event
     // cinemaCardEl.attr("data-lat", cinemaLat);
     // cinemaCardEl.attr("data-lng", cinemaLng);
-    let cinemaAddressEl = $("<p>").attr("class", "address").text(cinemaAddress);
-    let cinemaCityEl = $("<p>").attr("class", "city").text(cinemaCity);
-    let cinemaPostcodeEl = $("<p>").attr("class", "postcode").text(cinemaPostcode);
-    let cinemaDistanceEl = $("<p>").attr("class", "distance").text(cinemaDistance + " miles away");
-    let filmNameEl = $("<p>").attr("class", "filmName").text(filmName);
+    let cinemaAddressEl = $("<p id=cinemaInfo>").attr("class", "address").text(cinemaAddress);
+    let cinemaCityEl = $("<p id=cinemaInfo>").attr("class", "city").text(cinemaCity);
+    let cinemaPostcodeEl = $("<p id=cinemaInfo>").attr("class", "postcode").text(cinemaPostcode);
+    let cinemaDistanceEl = $("<p id=cinemaInfo>").attr("class", "distance").text(cinemaDistance + " miles away");
+    let filmNameEl = $("<p id=cinemaInfo>").attr("class", "filmName").text(filmName);
     // materialize badges didn't work as is, even though correct format and classes added. Will look into or eventually remove
-    let cinemaNextShowEl = $("<p>").attr("class", "nextShow new badge").text(showingDate + " " + cinemaNextShow);
+    let cinemaNextShowEl = $("<p id=cinemaInfo>").attr("class", "nextShow new badge").text(showingDate + " " + cinemaNextShow);
     cinemaNextShowEl.attr("data-badge-caption", "Showing")
 
 
@@ -225,7 +225,42 @@ $("img").on("click", function() {
   $(".cinemaCard").on("click", function() {
     initMap();
   });
-    //Within this onclick function, you would need to put the google maps API call. This way it only runs after clicking specific cinema, grabbing that cinema lat/lng data attribute as part of the call. Make sure to also add a .empty() function so that if you click on a different cinema, the new map will replace the old map.
+
+  function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsRenderer = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat:42.0446208,lng:-87.7658112}
+    });
+    directionsRenderer.setMap(map);
+  
+    // var getCoords = function() {
+    //   displayRoute(directionsService, directionsRenderer);
+    // };
+    displayRoute(directionsService, directionsRenderer);
+    // document.getElementById('deviceLocation').addEventListener('change', getCoords);
+    // document.getElementById('cinemaLocation').addEventListener('change', getCoords);
+  }
+  
+  function displayRoute(directionsService, directionsRenderer) {
+    directionsService.route({
+      // origin: document.getElementById('deviceLocation').value,
+      // destination: document.getElementById('cinemaLocation').value,
+      origin:{lat:42.0446208,lng:-87.7658112},
+      destination:{lat:42.1257216,lng:-87.7658112},
+      // origin:chicago,
+      // destination:boston,
+      travelMode: 'DRIVING'
+    },function(response, status) {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(response);
+      } else {
+        console.log('directionsRenderer request failed: ' + status);
+      }
+    }
+    );
+  }
 
   
   };

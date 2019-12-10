@@ -2,14 +2,14 @@
 $("#startBtn").on("click", function() {
 
 
-  getLocation()
+  getLocation();
   // Check if browser allows geolocation
 function getLocation() {
   if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
   }
   else {
-      alert("Use a different browser")
+      alert("Use a different browser");
   }
 }
 
@@ -24,6 +24,9 @@ function showPosition(position) {
   console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
   console.log(`Device location latitude: ${lat} Longitude: ${lon}`);
 }
+
+// currentLat = lat.toNum();
+// currentLon = lon.toNum();
 
 
 $(document).ready(function() {
@@ -45,9 +48,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic Qk9PVF8yOmdBSkVFWFhuTFlHVw===",
-        "client": "BOOT_2",
-        "x-api-key": "ZgTYUEfaLc3nwZHwGLzaD5kwBH0fGAgZ7eHIL724",
+        "Authorization": "Basic TlpEWjpxbXV5SWFST0RTbVk=",
+        "client": "NZDZ",
+        "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": deviceDateTime,
         "territory": "US",
@@ -181,9 +184,7 @@ $("img").on("click", function() {
     for (let i = 0; i < 5; i ++) {
 
     // Use for loop to generate all (5) cinema information with the next available showing data. 
-    let filmId = response.film_id;
     let filmName = response.film_name;
-    let cinemaId = response.cinemas[i].cinema_id;
     let cinemaName = response.cinemas[i].cinema_name;
     let cinemaAddress = response.cinemas[i].address;
     let cinemaCity = response.cinemas[i].city;
@@ -194,22 +195,20 @@ $("img").on("click", function() {
     let cinemaLat = response.cinemas[i].lat;
     let cinemaLng = response.cinemas[i].lng;
 
-    // Create divs, header, and p tags for each object data
+    // create divs, header, and p tags for each object data
     let cinemaCardEl = $("<div>").attr("class", "card cinemaCard");
     let cinemaCardBodyEl = $("<div>").attr("class", "card-body five-card");
     let cinemaNameEl = $("<h6>").attr("class", "card-title").text(cinemaName);
-    cinemaCardEl.attr("data-cinema", cinemaId);
-    cinemaCardEl.attr("data-film", filmId);
-    // Yong, you would need to create data attributes for your cinemaLat and cinemaLng lets like the lines immediately above, in order to pull that data with an onclick event
-    // cinemaCardEl.attr("data-lat", cinemaLat);
-    // cinemaCardEl.attr("data-lng", cinemaLng);
-    let cinemaAddressEl = $("<p id=cinemaInfo>").attr("class", "address").text(cinemaAddress);
-    let cinemaCityEl = $("<p id=cinemaInfo>").attr("class", "city").text(cinemaCity);
-    let cinemaPostcodeEl = $("<p id=cinemaInfo>").attr("class", "postcode").text(cinemaPostcode);
-    let cinemaDistanceEl = $("<p id=cinemaInfo>").attr("class", "distance").text(cinemaDistance + " miles away");
-    let filmNameEl = $("<p id=cinemaInfo>").attr("class", "filmName").text(filmName);
-    // materialize badges didn't work as is, even though correct format and classes added. Will look into or eventually remove
-    let cinemaNextShowEl = $("<p id=cinemaInfo>").attr("class", "nextShow new badge").text(showingDate + " " + cinemaNextShow);
+    // created data attributes for cinemaLat and cinemaLng lets in order to pull the data with an onclick event to redener google map directions
+    cinemaCardEl.attr("data-lat", cinemaLat);
+    cinemaCardEl.attr("data-lng", cinemaLng);
+    let cinemaAddressEl = $("<p>").attr("class", "address cinemaInfo").text(cinemaAddress);
+    let cinemaCityEl = $("<p>").attr("class", "city cinemaInfo").text(cinemaCity);
+    let cinemaPostcodeEl = $("<p>").attr("class", "postcode cinemaInfo").text(cinemaPostcode);
+    let cinemaDistanceEl = $("<p>").attr("class", "distance cinemaInfo").text(cinemaDistance + " miles away");
+    let filmNameEl = $("<p>").attr("class", "filmName cinemaInfo").text(filmName);
+    // need to fix materialize badges defaulting to align right!
+    let cinemaNextShowEl = $("<span>").attr("class", "new badge nextShow cinemaInfo").text(showingDate + " " + cinemaNextShow);
     cinemaNextShowEl.attr("data-badge-caption", "Showing")
 
 
@@ -220,11 +219,14 @@ $("img").on("click", function() {
   };
 
  // Yong, here's where I believe you would put the .cinemaCard onclick event function like I have above for the img tag function. Define the data attributes you'll be using/pulling from the data attributes you created above for cinemaLat and cinemaLng, like below
-  //  var latData = $(this).data("lat");
-  //  var lngData = $(this).data("lng");
+
   $(".cinemaCard").on("click", function() {
+    var cinemaLatData = $(this).data("lat");
+    var cinemaLngData = $(this).data("lng");
+    var mapBody = $("#map");
+    
+    mapBody.empty();
     initMap();
-  });
 
   function initMap() {
     var directionsService = new google.maps.DirectionsService;
@@ -241,16 +243,17 @@ $("img").on("click", function() {
     displayRoute(directionsService, directionsRenderer);
     // document.getElementById('deviceLocation').addEventListener('change', getCoords);
     // document.getElementById('cinemaLocation').addEventListener('change', getCoords);
-  }
+  };
   
   function displayRoute(directionsService, directionsRenderer) {
     directionsService.route({
       // origin: document.getElementById('deviceLocation').value,
       // destination: document.getElementById('cinemaLocation').value,
       origin:{lat:42.0446208,lng:-87.7658112},
-      destination:{lat:42.1257216,lng:-87.7658112},
-      // origin:chicago,
-      // destination:boston,
+      // origin:chicago, destination:boston,
+      // destination:{lat:42.1257216,lng:-87.7658112},
+      // insert the cinema lat/long data attributes for destination:
+      destination:{lat:cinemaLatData,lng:cinemaLngData},
       travelMode: 'DRIVING'
     },function(response, status) {
       if (status === 'OK') {
@@ -258,9 +261,10 @@ $("img").on("click", function() {
       } else {
         console.log('directionsRenderer request failed: ' + status);
       }
-    }
-    );
-  }
+    });
+  };
+
+  });
 
   
   };

@@ -222,7 +222,9 @@ $("img").on("click", function() {
  // Yong, here's where I believe you would put the .cinemaCard onclick event function like I have above for the img tag function. Define the data attributes you'll be using/pulling from the data attributes you created above for cinemaLat and cinemaLng, like below
   //  var latData = $(this).data("lat");
   //  var lngData = $(this).data("lng");
-
+  $(".cinemaCard").on("click", function() {
+    initMap();
+  });
     //Within this onclick function, you would need to put the google maps API call. This way it only runs after clicking specific cinema, grabbing that cinema lat/lng data attribute as part of the call. Make sure to also add a .empty() function so that if you click on a different cinema, the new map will replace the old map.
 
   

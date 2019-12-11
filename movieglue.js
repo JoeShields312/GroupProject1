@@ -1,11 +1,11 @@
 // Click to Display button triggers the showing of coordinates and all the cascading API calls (also controlled by click events) below
 
-// Set Default location
-// let lat = 42.0446208;
-// let lon = -87.6675072;
+// Set Default location and as global variables to be updated
+let lat = 42.0446208;
+let lon = -87.6675072;
+let closetShowingCoords;
 
-let lat = 40.7152661;
-let lon = -74.1037499;
+// `${closetShowingCoords}`
 
 $("#startBtn").on("click", function() {
 
@@ -27,16 +27,11 @@ function showPosition(position) {
   // User Location
   lat = position.coords.latitude;
   lon = position.coords.longitude;
-  
+
   // Check console
   console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
   console.log(`Device location latitude: ${lat} Longitude: ${lon}`);
 }
-
-// How to bring in user coords to API calls?
-// currentLat = lat.toNum();
-// currentLon = lon.toNum();
-
 
 $(document).ready(function() {
 
@@ -160,7 +155,8 @@ $("img").on("click", function() {
     $("#movieInfo").append(detailsCardEl);
   };
 
-
+  // redefined value to input into geolocation header
+  closetShowingCoords = lat + ";" + lon;
  // Cinema Show Times API Settings 
   var closestShowingSetting = {
   "crossDomain": true,
@@ -173,9 +169,7 @@ $("img").on("click", function() {
     "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
-    // We still need to replace this geolocation with a var from geolocation function at the top (Yong?)
-    // "Geolocation": `${lat};${lon}`,
-    "Geolocation": `40.7152661;-74.1037499`,
+    "Geolocation": `${closetShowingCoords}`,
     }
   }
 
@@ -246,7 +240,7 @@ $("img").on("click", function() {
     var directionsRenderer = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
-      center: {lat:42.0446208,lng:-87.7658112}
+      center: {lat:lat,lng:lon}
     });
     directionsRenderer.setMap(map);
   

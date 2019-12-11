@@ -50,9 +50,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic Tk9SVF8zOlRqM1YwWVl1Z3hQUg==",
-        "client": "NORT_3",
-        "x-api-key": "8XnCFsIfJs6S643FPjuXn30o9muS4JDTaHPmRSMc",
+        "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
+        "client": "CODI_6",
+        "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": `${convertedDeviceDateTime}`,
         "territory": "US",
@@ -202,9 +202,9 @@ $("img").on("click", function() {
     let cinemaLng = response.cinemas[i].lng;
 
     // create divs, header, and p tags for each object data
-    let cinemaCardEl = $("<div>").attr("class", "card cinemaCard");
-    let cinemaCardBodyEl = $("<div>").attr("class", "card-body five-card");
-    let cinemaNameEl = $("<h6>").attr("class", "card-title").text(cinemaName);
+    let cinemaCardEl = $("<div>").attr("class", "card cinemaCard col-mt-3");
+    let cinemaCardBodyEl = $("<div>").attr("class", "card-body five-card mb-3");
+    let cinemaNameEl = $("<h6>").attr("class", "cinema-title").text(cinemaName);
     // created data attributes for cinemaLat and cinemaLng lets in order to pull the data with an onclick event to redener google map directions
     cinemaCardEl.attr("data-lat", cinemaLat);
     cinemaCardEl.attr("data-lng", cinemaLng);

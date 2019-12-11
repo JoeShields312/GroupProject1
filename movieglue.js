@@ -45,9 +45,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic Qk9PVF8yOmdBSkVFWFhuTFlHVw===",
-        "client": "BOOT_2",
-        "x-api-key": "ZgTYUEfaLc3nwZHwGLzaD5kwBH0fGAgZ7eHIL724",
+        "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
+        "client": "CODI_6",
+        "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": deviceDateTime,
         "territory": "US",
@@ -155,9 +155,9 @@ $("img").on("click", function() {
   "method": "GET",
   "headers": {
     "api-version": "v200",
-    "Authorization": "Basic TlpEWjpxbXV5SWFST0RTbVk=",
-    "client": "NZDZ",
-    "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
+    "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
+    "client": "CODI_6",
+    "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
     "device-datetime": `${deviceDateTime}`,
     "territory": "US",
     // We still need to replace this geolocation with a var from geolocation function at the top (Yong?)
@@ -195,9 +195,9 @@ $("img").on("click", function() {
     let cinemaLng = response.cinemas[i].lng;
 
     // Create divs, header, and p tags for each object data
-    let cinemaCardEl = $("<div>").attr("class", "card cinemaCard");
-    let cinemaCardBodyEl = $("<div>").attr("class", "card-body five-card");
-    let cinemaNameEl = $("<h6>").attr("class", "card-title").text(cinemaName);
+    let cinemaCardEl = $("<div>").attr("class", "card cinemaCard col-mt-3");
+    let cinemaCardBodyEl = $("<div>").attr("class", "card-body five-card mb-3");
+    let cinemaNameEl = $("<h6>").attr("class", "cinema-title").text(cinemaName);
     cinemaCardEl.attr("data-cinema", cinemaId);
     cinemaCardEl.attr("data-film", filmId);
     // Yong, you would need to create data attributes for your cinemaLat and cinemaLng lets like the lines immediately above, in order to pull that data with an onclick event

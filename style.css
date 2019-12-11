@@ -16,6 +16,9 @@ h1 {
 	bottom: 100px;
 	color: white;
 }
+h6 {
+	font-weight: 700;
+}
 
 body {
 	background-image: url("./images/chicago-theatre.jpg");
@@ -28,7 +31,7 @@ body {
 }
 
 #cinemaOutput>* {
-    flex: 1 1 80px;
+    flex: auto;
 }
 
 .card-body img {
@@ -46,6 +49,7 @@ body {
 	height: 30px;
 	line-height: 1;
 	min-height: 3rem;
+	text-align: center;
 }
 
 .card {
@@ -74,10 +78,6 @@ body {
 
 #ten-card-deck>* {
     flex: 1 1 80px;
-}
-
-.card-title {
-text-align: center;
 }
 
 .card-body img {

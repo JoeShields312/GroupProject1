@@ -1,6 +1,5 @@
-// (function($){
-//     $(function(){
-//       $('.parallax').parallax();
-//      $('select').formSelect();
-//     }); // end of document ready
-//   })(jQuery); // end of jQuery n
+(function($){
+    $(function(){
+      $('.parallax').parallax();
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space

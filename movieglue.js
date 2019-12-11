@@ -150,7 +150,7 @@ $("img").on("click", function() {
 
     // appended all the elements created
     detailsCardEl.append(detailsCardBodyEl);
-    detailsCardBodyEl.append(titleEl, releasedEl, ratedEl, runtimeEl, genreEl, castEl, directorEl, plotEl, ratingsEl)
+    detailsCardBodyEl.append(titleEl, releasedEl, ratedEl, runtimeEl, genreEl, castEl, directorEl, ratingsEl, plotEl)
     $("#movieInfo").append(detailsCardEl);
   };
 
@@ -163,9 +163,9 @@ $("img").on("click", function() {
   "method": "GET",
   "headers": {
     "api-version": "v200",
-    "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
-    "client": "CODI_6",
-    "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
+    "Authorization": "Basic Q09ESV83OlY2SVJQTzZ3bHV6Zw==",
+    "client": "CODI_7",
+    "x-api-key": "nCiJiLXWMK34utog051363AhigryxNFn59dfCaxT",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
     "Geolocation": `${closetShowingCoords}`,
@@ -212,7 +212,7 @@ $("img").on("click", function() {
     let cinemaPostcodeEl = $("<p>").attr("class", "postcode cinemaInfo").text(cinemaPostcode);
     let cinemaDistanceEl = $("<p>").attr("class", "distance cinemaInfo").text(cinemaDistance + " miles away");
     let filmNameEl = $("<p>").attr("class", "filmName cinemaInfo").text(filmName);
-    // need to fix materialize badges defaulting to align right!
+    // added materilize css badge for showtime. Had to set as float:none to remove default float:right.
     let cinemaNextShowEl = $("<span>").attr("class", "new badge nextShow cinemaInfo").text(showingDate + " " + cinemaNextShow);
     cinemaNextShowEl.attr("data-badge-caption", "Showing")
 

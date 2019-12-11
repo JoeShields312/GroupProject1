@@ -61,7 +61,30 @@ body {
 }
 
 .cinemaCard {
+	transition: 400ms;
 	background-color: crimson;
+}
+
+.cinemaCard:hover {
+	transform: scale(1.2);
+	transition: 400ms;
+}
+
+.distance {
+	font-weight: bold;
+}
+
+.runtime, .ratings {
+	font-weight: bold;
+}
+
+p.plot {
+	font-size: larger;
+}
+
+span.new.badge.nextShow.cinemaInfo {
+	float: none;
+	font-size: larger;
 }
 
 .movieCard {
@@ -83,8 +106,8 @@ body {
 }
 
 .card-body img {
-height: 100%;
-width: auto;
+	height: 100%;
+	width: auto;
 }
 
 .img {
@@ -121,4 +144,5 @@ footer {
 	text-shadow: ivory;
 	text-size-adjust: 15px;
 }
+
 

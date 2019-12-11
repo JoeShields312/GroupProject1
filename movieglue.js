@@ -1,4 +1,12 @@
 // Click to Display button triggers the showing of coordinates and all the cascading API calls (also controlled by click events) below
+
+// Set Default location
+// let lat = 42.0446208;
+// let lon = -87.6675072;
+
+let lat = 40.7152661;
+let lon = -74.1037499;
+
 $("#startBtn").on("click", function() {
 
 
@@ -17,8 +25,8 @@ function getLocation() {
 function showPosition(position) {
 
   // User Location
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
   
   // Check console
   console.log("Device Location Latitude: " + lat + " Longitude: " + lon);
@@ -47,9 +55,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic TlpEWjpxbXV5SWFST0RTbVk=",
-        "client": "NZDZ",
-        "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
+        "Authorization": "Basic Tk9SVF8zOlRqM1YwWVl1Z3hQUg==",
+        "client": "NORT_3",
+        "x-api-key": "8XnCFsIfJs6S643FPjuXn30o9muS4JDTaHPmRSMc",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": `${convertedDeviceDateTime}`,
         "territory": "US",
@@ -160,13 +168,14 @@ $("img").on("click", function() {
   "method": "GET",
   "headers": {
     "api-version": "v200",
-    "Authorization": "Basic TlpEWjpxbXV5SWFST0RTbVk=",
-    "client": "NZDZ",
-    "x-api-key": "E2PqsAEK8R2SyYgdJTBhx5gCCxuE4oMb3sYkjZoK",
+    "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
+    "client": "CODI_6",
+    "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
     // We still need to replace this geolocation with a var from geolocation function at the top (Yong?)
-    "Geolocation": "42.0446208;-87.6675072",
+    // "Geolocation": `${lat};${lon}`,
+    "Geolocation": `40.7152661;-74.1037499`,
     }
   }
 
@@ -253,7 +262,7 @@ $("img").on("click", function() {
     directionsService.route({
       // origin: document.getElementById('deviceLocation').value,
       // destination: document.getElementById('cinemaLocation').value,
-      origin:{lat:42.0446208,lng:-87.7658112},
+      origin:{lat:lat,lng:lon},
       // origin:chicago, destination:boston,
       // destination:{lat:42.1257216,lng:-87.7658112},
       // insert the cinema lat/long data attributes for destination:

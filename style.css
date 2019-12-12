@@ -66,11 +66,11 @@ body {
 }
 
 .cinemaCard:hover {
-	transform: scale(1.2);
+	transform: scale(1.1);
 	transition: 400ms;
 }
 .movieCard:hover {
-	transform: scale(1.2);
+	transform: scale(1.1);
 	transition: 400ms;
 }
 

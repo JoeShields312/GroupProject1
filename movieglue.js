@@ -49,9 +49,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic Q09ESV82OnUzZHgyUm1saUhNdQ==",
-        "client": "CODI_6",
-        "x-api-key": "SYZshJsNPj6rLlnHEhQ1t5EdD9azrTRT3567kq06",
+        "Authorization": "Basic Q09ESV83OlY2SVJQTzZ3bHV6Zw==",
+        "client": "CODI_7",
+        "x-api-key": "nCiJiLXWMK34utog051363AhigryxNFn59dfCaxT",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": `${convertedDeviceDateTime}`,
         "territory": "US",

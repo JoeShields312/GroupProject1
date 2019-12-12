@@ -1,71 +1,49 @@
-# GroupProject1-
+# Group Project 1 - Create a Browser Based User Application Utilizng APIs
 
-    <!-- HTML -->
+This group project required creating a user app that is interactive, uses at least 2 server side APIs and 1 third part API, and a CSS framework that was not Bootstrap.
 
-    <!-- Jumboron -->
-        <!-- user input zipCode -->
-        <!-- submit zipCode -->
+## Concept, Composition of Website
 
-        <!-- ++++ -->
+User Story: As a casual moviegoer, I want to be able to quickly view and choose from top movie options, and conveniently navigate to a nearby theatre.
 
-    <!-- empty div for propagation on submit of zipCode -->
-        <!-- JS -->
-        <!-- div posterBtn x5 -->
+Our website gives users the ability to find the top ten films in theaters, choose a film, and have access to movie details of the chosen film. They then see the nearest 5 theaters, which includes the next showing of the film they chose. Once they select a cinema, directions to the cinema populates. New results update if they select different movies or cineams.
 
-        <!-- ++++ -->
+When users try to decide on a movie, we’re providing choices and also the ease of selection by curating top options, local availability, with click events to limit typing but embedding data attributes to transfer those selections to output the next flow of data.
 
-    <!-- empty div for propagation on click of posterBtn -->
-        <!-- JS -->
-        <!-- div rotten tomatoes  review -->
-        <!-- div for scores -->
-        <!-- mapBtn for google map -->
+APIs used:
+Movieglu: FilmsShowingNow; ClosestShowings
+OMDB
+Google Maps
+moment.js
+jquery
 
-    <!-- empty div for propagation on click of mapBtn -->
-        <!-- JS -->
-        <!-- div for google map api -->
+CSS used:
+Materialize
 
-    <!-- Footer -->
+## Process
 
-API used
+The project was split among our team members: Joe, Jenny, and Yong. Joe focused on the front end HTML/CSS, while Jenny and Yong focused on the javascript and APIs. TThe HTML includes a combination of hard coded and dynamically (javascript) generated HTML. 
 
-movieglu
-    GetFilmShowingNow
-    GetFilmShowtime
-    GetCinemaDetails
+Challenges:
+Different API formats and limitations, CORS errors, new CSS, git push/pull/merge issues.
 
-API Endpoint : https://api-gate2.movieglu.com/
-Username : SMIT_0
-x-api-key : ZRUjCrZ5r18epZovOj1A3aesuvedkfbZ7Dy06U7U
-Territory : US
-Authorization : Basic U01JVF8wOkF4emkwWEppMDFlcg==
-Request limit : 75
+Successes:
+Clear concept, efficient itemization of tasks, collaborative effort to troubleshoot and develop improvements and solutions.
 
-omdb
+## Deployment
 
-GoogleMaps Api
-AIzaSyAANtePNUW17A6gNOBBD5uSa9oZA12jw-A
+Our project is deployed on Github. 
 
+https://github.com/JShields30/GroupProject1
 
-1.Get Device Location (Lon, Lat) from user pressing btn
+https://jshields30.github.io/GroupProject1/ 
 
-2.with Coords from device location - getfilmsnow(api)
-3.film_id (for api), film_year(for omdb), film_name(omdb), image(btn)
+## Acceptance Criteria
 
-4.OMDB (need details) stuff using film_year and film_name
-    From OMDB - 
+As a team, we had a clear idea of our MVP. Our concept translates to a working application that increases efficiency for the user. 
 
-    {"Title":"The Dark Knight","Year":"2008",
-    
-    "Rated":"PG-13",
-
-    "Ratings":[{"Source":"Internet Movie Database","Value":"9.0/10"},{"Source":"Rotten Tomatoes","Value":"94%"},{"Source":"Metacritic","Value":"84/100"}],
-    
-    
-    
-    "imdbVotes":"2,124,722","imdbID":"tt0468569","Type":"movie","DVD":"09 Dec 2008","BoxOffice":"$533,316,061","Production":"Warner Bros. Pictures/Legendary","Website":"N/A","Response":"True"}
-
-5.using film_id, moment.js(date) - getfilmshowtime(api)
-6.user onclick showtime(btn) - cinema_id
-7.using cinema_id - getcinemadetails(api)
-8.cinema coords, distance from divice location
-9.google map direction
+Some ideas for the next iterations of our app:
+* Expanded options for user selection (freedom to search cinemas first, or filter by other parameters, etc.)
+* Parse out more API data and add to existing functionality (trailers, more showtimes, google map directions and travel options,  etc.)
+* Use more CSS functionality to improve UX/UI (additional materialize components such as collapsible divs, card reveal, etc.)
+* Think of additional user needs (allow user to input address or locations rather than only using user location)

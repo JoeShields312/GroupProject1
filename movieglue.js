@@ -163,9 +163,9 @@ $("img").on("click", function() {
   "method": "GET",
   "headers": {
     "api-version": "v200",
-    "Authorization": "Basic Q09ESV83OlY2SVJQTzZ3bHV6Zw==",
-    "client": "CODI_7",
-    "x-api-key": "nCiJiLXWMK34utog051363AhigryxNFn59dfCaxT",
+    "Authorization": "Basic Tk9SVF8yOjVrMWE3TGxET0w4MA==",
+    "client": "NORT_2",
+    "x-api-key": "cIoIcJ3Gh9aarXQRDs3VQ4FwP8OXHLVk3KVutSjr",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
     "Geolocation": `${closetShowingCoords}`,

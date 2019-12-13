@@ -3,10 +3,7 @@
 // Set Default location and as global variables to be updated
 let lat = 42.0446208;
 let lon = -87.6675072;
-let cinemaLat;
-let cinemaLng;
-let closetShowingCoords;
-let cinemaCoords;
+let closestShowingCoords;
 
 $("#startBtn").on("click", function() {
 
@@ -156,9 +153,7 @@ $("img").on("click", function() {
   };
 
   // redefined value to input into geolocation header
-  closetShowingCoords = lat + ";" + lon;
-  cinemaCoords = cinemaLat + ";" + cinemaLng;
-
+  closestShowingCoords = lat + ";" + lon;
  // Cinema Show Times API Settings 
   var closestShowingSetting = {
   "crossDomain": true,
@@ -171,9 +166,9 @@ $("img").on("click", function() {
     "x-api-key": "skd50xEDNk8cdn8UQa8zc6UMUTNNwg4m7hRZ13AU",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
-
-    "Geolocation": "42.0446208;-87.6675072",
-    // "Geolocation": `${closetShowingCoords}`,
+    // Default placeholder for testing
+    // "Geolocation": "42.0446208;-87.6675072",
+    "Geolocation": `${closestShowingCoords}`,
     }
   }
 
@@ -188,7 +183,6 @@ $("img").on("click", function() {
     closestShowing(response);
 
   });
-
   
   function closestShowing(response) {
 
@@ -218,7 +212,7 @@ $("img").on("click", function() {
     let cinemaPostcodeEl = $("<p>").attr("class", "postcode cinemaInfo").text(cinemaPostcode);
     let cinemaDistanceEl = $("<p>").attr("class", "distance cinemaInfo").text(cinemaDistance + " miles away");
     let filmNameEl = $("<p>").attr("class", "filmName cinemaInfo").text(filmName);
-    // added materilize css badge for showtime. Had to set as float:none to remove default float:right.
+    // added materialize css badge for showtime. Had to set as float:none to remove default float:right.
     let cinemaNextShowEl = $("<span>").attr("class", "new badge nextShow cinemaInfo").text(showingDate + " " + cinemaNextShow);
     cinemaNextShowEl.attr("data-badge-caption", "Showing")
 
@@ -241,12 +235,13 @@ $("img").on("click", function() {
   
   // runs function and calls to render the map and route
   function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsRenderer = new google.maps.DirectionsRenderer
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: {lat:lat,lng:lon}
     });
-    var directionsService = new google.maps.DirectionsService;
-    var directionsRenderer = new google.maps.DirectionsRenderer
+
     // ({
     //   draggable: true,
     //   map: map,
@@ -262,7 +257,7 @@ $("img").on("click", function() {
     // });
     displayRoute(directionsService, directionsRenderer);
     // displayRoute("Winnetka, IL" , "Evanston, IL", directionsService, directionsRenderer);
-    // displayRoute(`${closetShowingCoords}` , `${cinemaCoords}`, directionsService, directionsRenderer);
+    // displayRoute(`${closestShowingCoords}` , `${cinemaCoords}`, directionsService, directionsRenderer);
   };
   
   function displayRoute(service, display) {

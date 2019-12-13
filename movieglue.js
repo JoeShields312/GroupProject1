@@ -3,9 +3,10 @@
 // Set Default location and as global variables to be updated
 let lat = 42.0446208;
 let lon = -87.6675072;
+let cinemaLat;
+let cinemaLng;
 let closetShowingCoords;
-
-// `${closetShowingCoords}`
+let cinemaCoords;
 
 $("#startBtn").on("click", function() {
 
@@ -156,6 +157,8 @@ $("img").on("click", function() {
 
   // redefined value to input into geolocation header
   closetShowingCoords = lat + ";" + lon;
+  cinemaCoords = cinemaLat + ";" + cinemaLng;
+
  // Cinema Show Times API Settings 
   var closestShowingSetting = {
   "crossDomain": true,
@@ -168,7 +171,9 @@ $("img").on("click", function() {
     "x-api-key": "cIoIcJ3Gh9aarXQRDs3VQ4FwP8OXHLVk3KVutSjr",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
-    "Geolocation": `${closetShowingCoords}`,
+
+    "Geolocation": "42.0446208;-87.6675072",
+    // "Geolocation": `${closetShowingCoords}`,
     }
   }
 
@@ -184,6 +189,7 @@ $("img").on("click", function() {
 
   });
 
+  
   function closestShowing(response) {
 
     for (let i = 0; i < 5; i ++) {
@@ -232,54 +238,67 @@ $("img").on("click", function() {
     // Empty container before populating new map on click of a different cinema
     mapBody.empty();
     initMap();
-
+  
   // runs function and calls to render the map and route
   function initMap() {
-    var directionsService = new google.maps.DirectionsService;
-    var directionsRenderer = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: {lat:lat,lng:lon}
     });
+    var directionsService = new google.maps.DirectionsService;
+    var directionsRenderer = new google.maps.DirectionsRenderer
+    // ({
+    //   draggable: true,
+    //   map: map,
+    //   panel: document.getElementById('right-panel')
+    // })
+    ;
     directionsRenderer.setMap(map);
-  
-    // var getCoords = function() {
-    //   displayRoute(directionsService, directionsRenderer);
-    // };
+    // directionsRenderer.addListner('directions_changed', function() {
+    //   computeTotalDistance(directionsRenderer.getDirections());
+    // });
+    // directionsRenderer.setMap(map, 'directions_changed', function() {
+    //   computeTotalDistance(directionsRenderer.getDirections());
+    // });
     displayRoute(directionsService, directionsRenderer);
-    // document.getElementById('deviceLocation').addEventListener('change', getCoords);
-    // document.getElementById('cinemaLocation').addEventListener('change', getCoords);
+    // displayRoute("Winnetka, IL" , "Evanston, IL", directionsService, directionsRenderer);
+    // displayRoute(`${closetShowingCoords}` , `${cinemaCoords}`, directionsService, directionsRenderer);
   };
   
-  function displayRoute(directionsService, directionsRenderer) {
-    directionsService.route({
-      // origin: document.getElementById('deviceLocation').value,
-      // destination: document.getElementById('cinemaLocation').value,
+  function displayRoute(service, display) {
+    service.route({
       origin:{lat:lat,lng:lon},
-      // origin:chicago, destination:boston,
-      // destination:{lat:42.1257216,lng:-87.7658112},
-      // insert the cinema lat/long data attributes for destination:
       destination:{lat:cinemaLatData,lng:cinemaLngData},
-      travelMode: 'DRIVING'
+      travelMode: 'DRIVING',
+      avoidTolls: true
     },function(response, status) {
       if (status === 'OK') {
-        directionsRenderer.setDirections(response);
+        display.setDirections(response);
       } else {
-        console.log('directionsRenderer request failed: ' + status);
+        console.log('Could not display directions due to: ' + status);
       }
     });
-  };
+  }
+  // function computeTotalDistance(result) {
+  //   var total = 0;
+  //   var myroute = result.routes[0];
+  //   for (var i = 0; i < myroute.legs.length; i++) {
+  //     total += myroute.legs[i].distance.value;
+  //   }
+  //   total = total / 1000;
+  //   document.getElementById('total').innerHTML = total + ' km';
+  // };
 
-  });
+});
 
   
-  };
+};
 
 
 });
 
 };
-  
+
 
 
 });

@@ -50,9 +50,9 @@ $(document).ready(function() {
       "method": "GET",
       "headers": {
         "api-version": "v200",
-        "Authorization": "Basic Tk9SVF8yOjVrMWE3TGxET0w4MA==",
-        "client": "NORT_2",
-        "x-api-key": "cIoIcJ3Gh9aarXQRDs3VQ4FwP8OXHLVk3KVutSjr",
+        "Authorization": "Basic TlU6TTN3R1hqQjk2cHZF",
+        "client": "NU",
+        "x-api-key": "skd50xEDNk8cdn8UQa8zc6UMUTNNwg4m7hRZ13AU",
         // "device-datetime": `${deviceDateTime}`,
         "device-datetime": `${convertedDeviceDateTime}`,
         "territory": "US",
@@ -166,9 +166,9 @@ $("img").on("click", function() {
   "method": "GET",
   "headers": {
     "api-version": "v200",
-    "Authorization": "Basic Tk9SVF8yOjVrMWE3TGxET0w4MA==",
-    "client": "NORT_2",
-    "x-api-key": "cIoIcJ3Gh9aarXQRDs3VQ4FwP8OXHLVk3KVutSjr",
+    "Authorization": "Basic TlU6TTN3R1hqQjk2cHZF",
+    "client": "NU",
+    "x-api-key": "skd50xEDNk8cdn8UQa8zc6UMUTNNwg4m7hRZ13AU",
     "device-datetime": `${convertedDeviceDateTime}`,
     "territory": "US",
 

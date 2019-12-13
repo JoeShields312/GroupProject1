@@ -81,6 +81,8 @@ $(document).ready(function() {
     
     // create divs, header, and p tags for each object data
     let cardEl = $("<div>").attr("class", "card movieCard");
+    let hoverEl = $("<div>").attr("class", "card-hover");
+    hoverEl.text("Click here to view movie details")
     let cardBodyEl = $("<div>").attr("class", "card-body ten-card");
     let cardImageEl = $("<img>").attr("src", `${filmImage}`);
     cardImageEl.attr("data-film", filmId);
@@ -88,6 +90,7 @@ $(document).ready(function() {
     let cardNameEl = $("<h6>").attr("class", "card-title").text(filmName);
 
     // appended all the elements created
+    cardEl.append(hoverEl);
     cardEl.append(cardBodyEl);
     cardBodyEl.append(cardImageEl).append(cardNameEl);
     $("#ten-card-deck").append(cardEl);
